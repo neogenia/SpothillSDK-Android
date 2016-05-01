@@ -37,6 +37,14 @@ public class ExampleApplication extends Application
 }
 ```
 
+Nescessary imports into build.gradle of your application:
+
+```
+	compile 'com.squareup.retrofit2:retrofit:2.0.2'
+	compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+	compile 'org.altbeacon:android-beacon-library:2.7'
+```
+
 
 In Application file 
 
