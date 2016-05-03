@@ -41,8 +41,8 @@ Nescessary imports into build.gradle of your application:
 
 ```
 	compile 'com.squareup.retrofit2:retrofit:2.0.2'
-	compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
-	compile 'org.altbeacon:android-beacon-library:2.7'
+	compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+	compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
 ```
 
 
