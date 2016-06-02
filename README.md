@@ -27,7 +27,7 @@ public class ExampleApplication extends Application
 		// parameter Context
 		// parameter String - hash of provider
 		// parameter Boolean - true if you want to use debug
-		spothillLibrary = SpothillLibrary.getInstanceForApplication(this, "hash", false);
+		spothillLibrary = SpothillLibrary.getInstanceForApplication(getApplicationContext(), "exampleHash", false);
 	}
 
 	public SpothillLibrary getSpothillLibrary()

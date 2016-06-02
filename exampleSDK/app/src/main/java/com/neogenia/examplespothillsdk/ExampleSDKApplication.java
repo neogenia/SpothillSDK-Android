@@ -16,7 +16,7 @@ public class ExampleSDKApplication extends Application
 	{
 		super.onCreate();
 
-		spothillLibrary = SpothillLibrary.getInstanceForApplication(this, "hash", true);
+		spothillLibrary = SpothillLibrary.getInstanceForApplication(getApplicationContext(), "hash", true);
 	}
 
 	public SpothillLibrary getSpothillLibrary()

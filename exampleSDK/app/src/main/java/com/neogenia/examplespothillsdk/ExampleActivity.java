@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 import cz.neogenia.spothill_library.CampaignsReceiver;
 import cz.neogenia.spothill_library.SpothillLibrary;
+import cz.neogenia.spothill_library.api.user.User;
+import cz.neogenia.spothill_library.models.Callback;
 import cz.neogenia.spothill_library.models.Campaign;
 
 public class ExampleActivity extends AppCompatActivity implements CampaignsReceiver {
@@ -39,12 +41,20 @@ public class ExampleActivity extends AppCompatActivity implements CampaignsRecei
 
 		spothillLibrary = ((ExampleSDKApplication)getApplicationContext()).getSpothillLibrary();
 
-		spothillLibrary.bind(getApplicationContext(), this);
-		try {
-			spothillLibrary.startSendingCampaigns();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+		spothillLibrary.setCampaignsReceiver(this);
+
+		spothillLibrary.temporalLogin(new Callback<User>() {
+			@Override
+			public void success(User object) {
+				spothillLibrary.startSendingCampaigns();
+			}
+
+			@Override
+			public void error() {
+
+			}
+		});
+
 	}
 
 	@Override
