@@ -1,15 +1,14 @@
 package com.neogenia.examplespothillsdk;
 
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -41,12 +40,10 @@ public class ExampleActivity extends AppCompatActivity implements CampaignsRecei
 
 		spothillLibrary = ((ExampleSDKApplication)getApplicationContext()).getSpothillLibrary();
 
-		spothillLibrary.setCampaignsReceiver(this);
-
 		spothillLibrary.temporalLogin(new Callback<User>() {
 			@Override
 			public void success(User object) {
-				spothillLibrary.startSendingCampaigns();
+				spothillLibrary.startSendingCampaigns(ExampleActivity.this);
 			}
 
 			@Override

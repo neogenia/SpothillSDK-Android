@@ -1,4 +1,4 @@
-# SpothillSDK-Android
+# Spothill library
 
 Spothill library is a tool for working with Spothill data based on Beacon
 devices + working with user data from Spothill database. Service for Beacon
@@ -8,7 +8,7 @@ Basic setup for start using Spothill library:
 
 There is necessity to add this line into build.gradle of project into dependencies of buildscript beacause of Realm database system:
 ```
-classpath "io.realm:realm-gradle-plugin:0.88.2"
+classpath "io.realm:realm-gradle-plugin:1.0.0"
 ```
 
 In case of troubles with Realm database there is [Getting Started](https://realm.io/docs/java/latest/#getting-started) guide. There is no need for downloading and applying realm plugin but there is still need for adding classpath + Progruad lines in getting stared.
@@ -18,31 +18,20 @@ Next step is to inicialize Spothill Library in Application file.
 ```
 public class ExampleApplication extends Application
 {
-	public SpothillLibrary spothillLibrary;
+public SpothillLibrary spothillLibrary;
 
-	@Override
-	public void onCreate()
-	{
-		super.onCreate();
-		// parameter Context
-		// parameter String - hash of provider
-		// parameter Boolean - true if you want to use debug
-		spothillLibrary = SpothillLibrary.getInstanceForApplication(getApplicationContext(), "exampleHash", false);
-	}
-
-	public SpothillLibrary getSpothillLibrary()
-	{
-		return this.spothillLibrary;
-	}
+@Override
+public void onCreate()
+{
+super.onCreate();
+spothillLibrary = SpothillLibrary.getInstanceForApplication(this, "hash");
 }
-```
 
-Nescessary imports into build.gradle of your application:
-
-```
-	compile 'com.squareup.retrofit2:retrofit:2.0.2'
-	compile 'com.squareup.retrofit2:converter-gson:2.0.2'
-	compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+public SpothillLibrary getSpothillLibrary()
+{
+return this.spothillLibrary;
+}
+}
 ```
 
 
@@ -231,14 +220,8 @@ spothillLibrary.stopSendingCampaigns();
 ```
 ## Notofications set up
 
-First you will need to call method setNotificationSettings with parameter context which is activity to which user will be redirected after clicking on notification
+First you will need to call method setNotificationSettings with activityToOpen parameter which is class of an activity to which user will be redirected after clicking on notification. smallIcon parameter represents image resource id which will displayed as icon in the notification.
 
 ```
-spothillLibrary.setNotificationSettings(context)
+spothillLibrary.setNotificationSettings(activityToOpen, smallIcon)
 ```
-
-You can also call method setImage with parameter id of image to be displayed in notification
-```
-spothillLibrary.setImage(id)
-```
-
