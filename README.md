@@ -8,7 +8,7 @@ Basic setup for start using Spothill library:
 
 There is necessity to add this line into build.gradle of project into dependencies of buildscript beacause of Realm database system:
 ```
-classpath "io.realm:realm-gradle-plugin:1.0.0"
+classpath "io.realm:realm-gradle-plugin:3.1.1"
 ```
 
 In case of troubles with Realm database there is [Getting Started](https://realm.io/docs/java/latest/#getting-started) guide. There is no need for downloading and applying realm plugin but there is still need for adding classpath + Progruad lines in getting stared.
