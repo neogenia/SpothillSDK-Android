@@ -6,31 +6,43 @@ detecting and Beacon handling is dealt with inside SDK
 
 Basic setup for start using Spothill library:
 
-There is necessity to add this line into build.gradle of project into dependencies of buildscript beacause of Realm database system:
+There is necessity to add this line into build.gradle of project into dependencies of buildscript because of Realm database system:
 ```
 classpath "io.realm:realm-gradle-plugin:3.1.1"
 ```
 
 In case of troubles with Realm database there is [Getting Started](https://realm.io/docs/java/latest/#getting-started) guide. There is no need for downloading and applying realm plugin but there is still need for adding classpath + Progruad lines in getting stared.
 
+Then add these dependencies to the app level build.gradle in the dependencies section:
+```
+dependencies {
+    ...
+    
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+    compile 'org.altbeacon:android-beacon-library:2.9.2'
+    
+    ...
+}
+```
+
 Next step is to inicialize Spothill Library in Application file.
 
 ```
-public class ExampleApplication extends Application
-{
-public SpothillLibrary spothillLibrary;
+public class ExampleApplication extends Application {
+ public SpothillLibrary spothillLibrary;
 
-@Override
-public void onCreate()
-{
-super.onCreate();
-spothillLibrary = SpothillLibrary.getInstanceForApplication(this, "hash");
-}
+ @Override
+ public void onCreate() {
+  super.onCreate();
+  spothillLibrary = SpothillLibrary.getInstanceForApplication(this, "hash");
+ }
 
-public SpothillLibrary getSpothillLibrary()
-{
-return this.spothillLibrary;
-}
+ public SpothillLibrary getSpothillLibrary() {
+  return this.spothillLibrary;
+ }
 }
 ```
 
