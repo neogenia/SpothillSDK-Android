@@ -78,7 +78,7 @@ spothillLibrary.temporalLogin(new Callback<User>() {
 	}
 
 	@Override
-	public void error() {
+	public void error(Spothill error) {
 		Log.i("User:", "Failed to login!!")
 	}
 });
@@ -95,7 +95,7 @@ spothillLibrary.registration(name,surname,email,sex,password, new Callback<User>
 	}
 
 	@Override
-	public void error() {
+	public void error(Spothill error) {
 		Log.i("User", "Not registered!")
 	}
 });
@@ -105,7 +105,7 @@ spothillLibrary.registration(name,surname,email,sex,password, new Callback<User>
 Login user is posible with simple callback method 
 
 ```
-spothillLibrary.login(name,password, new Callback<User>() {
+spothillLibrary.login(email,password, new Callback<User>() {
 
 	@Override
 	public void success(User user) {
@@ -113,7 +113,7 @@ spothillLibrary.login(name,password, new Callback<User>() {
 	}
 
 	@Override
-	public void error() {
+	public void error(Spothill error) {
 		Log.i("User", "Uups something went wrong")
 	}
 });
@@ -237,3 +237,6 @@ First you will need to call method setNotificationSettings with activityToOpen p
 ```
 spothillLibrary.setNotificationSettings(activityToOpen, smallIcon)
 ```
+
+### SpothillError
+Use the error.getCode() to get the code and then you can compare it by defined error coder like "SpothillError.UNKNOWN_ERROR". So you are able to get more info about the error.

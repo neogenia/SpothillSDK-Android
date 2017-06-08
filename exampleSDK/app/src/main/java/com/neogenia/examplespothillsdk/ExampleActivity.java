@@ -47,7 +47,7 @@ public class ExampleActivity extends AppCompatActivity implements CampaignsRecei
 			}
 
 			@Override
-			public void error() {
+			public void error(SpothillError error) {
 
 			}
 		});
