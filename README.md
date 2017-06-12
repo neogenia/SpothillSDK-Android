@@ -100,6 +100,23 @@ spothillLibrary.registration(name,surname,email,sex,password, new Callback<User>
 	}
 });
 ```
+By default the registration methods requires the activation of the account by link send to registration email address. If you want to skip the activation then use the skipActivation param with "true" value.
+
+```
+spothillLibrary.registration(name,surname,email,sex,password, true, new Callback<User>() {
+
+	@Override
+	public void success(User user) {
+		Log.i("User", "Registered!")
+	}
+
+	@Override
+	public void error(Spothill error) {
+		Log.i("User", "Not registered!")
+	}
+});
+```
+
 ### Login
 
 Login user is posible with simple callback method 
