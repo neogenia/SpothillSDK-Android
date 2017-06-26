@@ -78,7 +78,7 @@ spothillLibrary.temporalLogin(new Callback<User>() {
 	}
 
 	@Override
-	public void error() {
+	public void error(Spothill error) {
 		Log.i("User:", "Failed to login!!")
 	}
 });
@@ -95,17 +95,34 @@ spothillLibrary.registration(name,surname,email,sex,password, new Callback<User>
 	}
 
 	@Override
-	public void error() {
+	public void error(Spothill error) {
 		Log.i("User", "Not registered!")
 	}
 });
 ```
+By default the registration methods requires the activation of the account by link send to registration email address. If you want to skip the activation then use the skipActivation param with "true" value.
+
+```
+spothillLibrary.registration(name,surname,email,sex,password, true, new Callback<User>() {
+
+	@Override
+	public void success(User user) {
+		Log.i("User", "Registered!")
+	}
+
+	@Override
+	public void error(Spothill error) {
+		Log.i("User", "Not registered!")
+	}
+});
+```
+
 ### Login
 
 Login user is posible with simple callback method 
 
 ```
-spothillLibrary.login(name,password, new Callback<User>() {
+spothillLibrary.login(email,password, new Callback<User>() {
 
 	@Override
 	public void success(User user) {
@@ -113,7 +130,7 @@ spothillLibrary.login(name,password, new Callback<User>() {
 	}
 
 	@Override
-	public void error() {
+	public void error(Spothill error) {
 		Log.i("User", "Uups something went wrong")
 	}
 });
@@ -237,3 +254,6 @@ First you will need to call method setNotificationSettings with activityToOpen p
 ```
 spothillLibrary.setNotificationSettings(activityToOpen, smallIcon)
 ```
+
+### SpothillError
+Use the error.getCode() to get the code and then you can compare it by defined error coder like "SpothillError.UNKNOWN_ERROR". So you are able to get more info about the error.
